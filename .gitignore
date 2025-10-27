@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+all_env/
+venv/
+env/
+ENV/
+
+# Data files (too large for GitHub)
+Data/
+
+# Large model checkpoint files (exclude all .pth files)
+*.pth
+
+# Keep only essential files for demonstration
+!recognition/ImprovedUNet3D_Prostate_s48300515/outputs/training_history.png
+!recognition/ImprovedUNet3D_Prostate_s48300515/outputs/test_results.json
+!recognition/ImprovedUNet3D_Prostate_s48300515/outputs/config.json
+!recognition/ImprovedUNet3D_Prostate_s48300515/outputs/predictions/*.png
+!recognition/ImprovedUNet3D_Prostate_s48300515/outputs/predictions/*.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
