@@ -486,28 +486,17 @@ python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
 
 ## References
 
-1. **Çiçek, Ö., Abdulkadir, A., Lienkamp, S. S., Brox, T., & Ronneberger, O. (2016).** "3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation." *International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)*, pp. 424-432.
-   - DOI: 10.1007/978-3-319-46723-8_49
-   - Original 3D UNet paper for volumetric segmentation
+Çiçek, Ö., Abdulkadir, A., Lienkamp, S. S., Brox, T., & Ronneberger, O. (2016). 3D U-Net: Learning dense volumetric segmentation from sparse annotation. In *Medical Image Computing and Computer-Assisted Intervention – MICCAI 2016* (pp. 424-432). Springer. https://doi.org/10.1007/978-3-319-46723-8_49
 
-2. **Ulyanov, D., Vedaldi, A., & Lempitsky, V. (2016).** "Instance Normalization: The Missing Ingredient for Fast Stylization." *arXiv preprint arXiv:1607.08022*.
-   - Normalization technique used in this implementation
+He, K., Zhang, X., Ren, S., & Sun, J. (2016). Deep residual learning for image recognition. In *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition* (pp. 770-778). IEEE. https://doi.org/10.1109/CVPR.2016.90
 
-3. **Milletari, F., Navab, N., & Ahmadi, S. A. (2016).** "V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation." *International Conference on 3D Vision (3DV)*, pp. 565-571.
-   - DOI: 10.1109/3DV.2016.79
-   - Dice loss function for segmentation
+Milletari, F., Navab, N., & Ahmadi, S. A. (2016). V-Net: Fully convolutional neural networks for volumetric medical image segmentation. In *2016 Fourth International Conference on 3D Vision (3DV)* (pp. 565-571). IEEE. https://doi.org/10.1109/3DV.2016.79
 
-4. **Siversson, C., Nordström, F., Nilsson, T., et al. (2015).** "Technical Note: MRI only prostate radiotherapy planning using the statistical decomposition algorithm." *Medical Physics*, 42(10), 6090-6097.
-   - DOI: 10.1118/1.4931417
-   - HipMRI dataset description and clinical context
+Ronneberger, O., Fischer, P., & Brox, T. (2015). U-Net: Convolutional networks for biomedical image segmentation. In *Medical Image Computing and Computer-Assisted Intervention – MICCAI 2015* (pp. 234-241). Springer. https://doi.org/10.1007/978-3-319-24574-4_28
 
-5. **He, K., Zhang, X., Ren, S., & Sun, J. (2016).** "Deep Residual Learning for Image Recognition." *IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*, pp. 770-778.
-   - DOI: 10.1109/CVPR.2016.90
-   - Residual connections methodology
+Siversson, C., Nordström, F., Nilsson, T., Nyholm, T., Jonsson, J., Gunnlaugsson, A., & Olsson, L. E. (2015). Technical note: MRI only prostate radiotherapy planning using the statistical decomposition algorithm. *Medical Physics, 42*(10), 6090-6097. https://doi.org/10.1118/1.4931417
 
-6. **Ronneberger, O., Fischer, P., & Brox, T. (2015).** "U-Net: Convolutional Networks for Biomedical Image Segmentation." *International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)*, pp. 234-241.
-   - DOI: 10.1007/978-3-319-24574-4_28
-   - Original 2D UNet architecture
+Ulyanov, D., Vedaldi, A., & Lempitsky, V. (2016). Instance normalization: The missing ingredient for fast stylization. *arXiv preprint arXiv:1607.08022*. https://arxiv.org/abs/1607.08022
 
 ## Troubleshooting
 
