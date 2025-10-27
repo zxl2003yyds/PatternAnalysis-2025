@@ -1,0 +1,17 @@
+{
+    "data_root": "D:\\zxl\\Downloads\\COMP3710_Final_Report\\Data\\Labelled_weekly_MR_images_of_the_male_pelvis-Xken7gkM-\\data\\HipMRI_study_complete_release_v1",
+    "target_shape": [
+        48,
+        96,
+        96
+    ],
+    "num_classes": 5,
+    "base_channels": 32,
+    "batch_size": 1,
+    "epochs": 35,
+    "learning_rate": 0.001,
+    "num_workers": 2,
+    "output_dir": "./outputs",
+    "save_freq": 10,
+    "resume": false
+}
