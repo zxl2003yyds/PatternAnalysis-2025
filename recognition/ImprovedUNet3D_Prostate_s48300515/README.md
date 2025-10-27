@@ -534,7 +534,7 @@ This implementation is for educational purposes as part of COMP3710 Pattern Anal
 
 Implementation for COMP3710 Pattern Analysis Final Project, 2025.
 
-**Student:** zxl2003yyds  
+**Student:** XINLI ZHOU  
 **Task:** Question 7 - 3D Medical Image Segmentation (Hard Difficulty)  
 **Achievement:** Prostate Dice 0.8302 (Target: ≥0.70) ✅
 
