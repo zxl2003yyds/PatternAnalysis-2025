@@ -920,6 +920,7 @@ Implementation for COMP3710 Pattern Analysis Final Project, 2025.
 
 **Student:** XINLI ZHOU
 **Student ID:** s48300515
+
 **Task:** Question 7 - 3D Medical Image Segmentation (Hard Difficulty)  
 **Achievement:** Prostate Dice **0.8739** at full 144×288×288 resolution (Target: ≥0.70) ✅  
 **Training Platform:** NVIDIA A100 GPU (University HPC Cluster - Rangpur)  
