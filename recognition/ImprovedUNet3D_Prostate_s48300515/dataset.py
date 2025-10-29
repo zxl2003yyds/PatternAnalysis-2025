@@ -146,8 +146,13 @@ class ProstateDataset3D(Dataset):
         self.num_classes = num_classes
         
         # Paths to image and label directories
-        self.image_dir = os.path.join(data_root, 'semantic_MRs_anon')
-        self.label_dir = os.path.join(data_root, 'semantic_labels_anon')
+        # Support both naming conventions (Rangpur uses semantic_MRs/semantic_labels_only)
+        if os.path.exists(os.path.join(data_root, 'semantic_MRs_anon')):
+            self.image_dir = os.path.join(data_root, 'semantic_MRs_anon')
+            self.label_dir = os.path.join(data_root, 'semantic_labels_anon')
+        else:
+            self.image_dir = os.path.join(data_root, 'semantic_MRs')
+            self.label_dir = os.path.join(data_root, 'semantic_labels_only')
         
         # Get all image files
         self.image_files = sorted(glob.glob(os.path.join(self.image_dir, '*.nii.gz')))
@@ -165,14 +170,23 @@ class ProstateDataset3D(Dataset):
         np.random.seed(42)
         
         # Filter to only include images that have corresponding labels
-        # Labels have _SEMANTIC inserted before _LFOV
+        # Try multiple naming conventions
         valid_files = []
         for img_path in self.image_files:
             filename = os.path.basename(img_path)
-            label_filename = filename.replace('_LFOV.nii.gz', '_SEMANTIC_LFOV.nii.gz')
-            label_path = os.path.join(self.label_dir, label_filename)
-            if os.path.exists(label_path):
-                valid_files.append(img_path)
+            
+            # Try different label naming conventions
+            label_candidates = [
+                filename.replace('_LFOV.nii.gz', '_SEMANTIC_LFOV.nii.gz'),  # Original convention with _anon folders
+                filename.replace('_LFOV.nii.gz', '_SEMANTIC.nii.gz'),  # Rangpur convention
+                filename,  # Exact same filename
+            ]
+            
+            for label_filename in label_candidates:
+                label_path = os.path.join(self.label_dir, label_filename)
+                if os.path.exists(label_path):
+                    valid_files.append(img_path)
+                    break
         
         print(f"Found {len(valid_files)} images with corresponding labels out of {len(self.image_files)} total images")
         
@@ -227,12 +241,22 @@ class ProstateDataset3D(Dataset):
         image, _ = load_nifti_volume(img_path, normalize=True)
         
         # Load corresponding label
-        # Labels have _SEMANTIC inserted before _LFOV
+        # Try multiple naming conventions
         filename = os.path.basename(img_path)
-        label_filename = filename.replace('_LFOV.nii.gz', '_SEMANTIC_LFOV.nii.gz')
-        label_path = os.path.join(self.label_dir, label_filename)
+        label_candidates = [
+            filename.replace('_LFOV.nii.gz', '_SEMANTIC_LFOV.nii.gz'),  # Original convention with _anon folders
+            filename.replace('_LFOV.nii.gz', '_SEMANTIC.nii.gz'),  # Rangpur convention
+            filename,  # Exact same filename
+        ]
         
-        if os.path.exists(label_path):
+        label_path = None
+        for label_filename in label_candidates:
+            candidate_path = os.path.join(self.label_dir, label_filename)
+            if os.path.exists(candidate_path):
+                label_path = candidate_path
+                break
+        
+        if label_path and os.path.exists(label_path):
             label, _ = load_nifti_volume(label_path, normalize=False)
         else:
             # If label doesn't exist, skip this sample
@@ -354,7 +378,7 @@ def get_data_loaders(data_root, batch_size=2, target_shape=(64, 128, 128),
 
 if __name__ == '__main__':
     # Test the dataset
-    data_root = r'D:\zxl\Downloads\COMP3710_Final_Report\Data\Labelled_weekly_MR_images_of_the_male_pelvis-Xken7gkM-\data\HipMRI_study_complete_release_v1'
+    data_root = r'D:\zxl\Downloads\PatternAnalysis-2025\recognition\ImprovedUNet3D_Prostate_s48300515\Data\Labelled_weekly_MR_images_of_the_male_pelvis-Xken7gkM-\data\HipMRI_study_complete_release_v1'
     
     dataset = ProstateDataset3D(data_root=data_root, split='train')
     print(f"Dataset size: {len(dataset)}")
