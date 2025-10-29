@@ -369,8 +369,11 @@ The prostate segmentation accuracy (0.83) is suitable for clinical applications 
 - Small batch size (1) due to GPU memory constraints
 - Class imbalance requires careful metric interpretation
 - Lower resolution (48×96×96) compared to full clinical data
+- Prediction boundaries appear blocky due to nearest-neighbor upsampling (preserves discrete class labels)
 
 ### Sample Outputs
+
+**Note on Visual Quality:** Predictions appear pixelated/blocky because the model processes volumes at 48×96×96 resolution for GPU efficiency, then upsamples using nearest-neighbor interpolation to preserve discrete class labels. This is standard practice in medical segmentation to avoid blending anatomical structures.
 
 Training progress visualization showing loss and Dice coefficient curves over 35 epochs:
 
