@@ -291,7 +291,7 @@ def main(args):
     
     # Learning rate scheduler
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode='max', factor=0.5, patience=5, verbose=True
+        optimizer, mode='max', factor=0.5, patience=5
     )
     
     # Mixed precision training
@@ -393,7 +393,7 @@ if __name__ == '__main__':
     
     # Data parameters
     parser.add_argument('--data_root', type=str,
-                        default=r'D:\zxl\Downloads\COMP3710_Final_Report\Data\Labelled_weekly_MR_images_of_the_male_pelvis-Xken7gkM-\data\HipMRI_study_complete_release_v1',
+                        default=r'D:\zxl\Downloads\PatternAnalysis-2025\recognition\ImprovedUNet3D_Prostate_s48300515\Data\Labelled_weekly_MR_images_of_the_male_pelvis-Xken7gkM-\data\HipMRI_study_complete_release_v1',
                         help='Root directory of the dataset')
     parser.add_argument('--target_shape', type=int, nargs=3, default=[64, 128, 128],
                         help='Target volume shape (D H W)')
