@@ -685,7 +685,7 @@ Additional initial prediction samples:
 ## File Structure
 
 ```
-ImprovedUNet3D_Prostate/
+ImprovedUNet3D_Prostate_s48300515/
 ├── modules.py              # Model architecture and loss functions
 ├── dataset.py              # Data loading and preprocessing
 ├── train.py                # Training script
@@ -693,6 +693,20 @@ ImprovedUNet3D_Prostate/
 ├── test_setup.py           # GPU and environment verification
 ├── requirements.txt        # Python dependencies
 ├── README.md               # This file
+├── Rangpur_train/          # HPC cluster training scripts
+│   ├── train_job.sh            # Slurm job script for A100 training
+│   ├── predict_job.sh          # Slurm job script for batch prediction
+│   ├── test_job.sh             # Testing job script
+│   ├── setup_rangpur.sh        # Environment setup script
+│   ├── RANGPUR_SETUP.md        # HPC setup documentation
+│   └── QUICK_COMMANDS.txt      # Quick reference commands
+├── outputs/                # First training attempt outputs
+│   ├── best_model.pth          # Best model weights
+│   ├── checkpoint.pth          # Latest checkpoint
+│   ├── checkpoint_epoch_*.pth  # Epoch checkpoints (10, 20, 30)
+│   ├── training_history.png    # Training curves
+│   ├── test_results.json       # Test metrics
+│   └── config.json             # Training configuration
 ├── outputs_a100/           # A100 full resolution training outputs ⭐
 │   ├── training_history.png    # Training curves (100 epochs)
 │   ├── test_results.json       # Automated test metrics
