@@ -1,0 +1,106 @@
+===============================================
+QUICK COMMANDS FOR RANGPUR A100
+===============================================
+
+## ON YOUR WINDOWS MACHINE (PowerShell):
+
+# Connect to Rangpur:
+ssh s4830051@rangpur.compute.eait.uq.edu.au
+
+# Transfer files TO Rangpur:
+scp -r "local_folder" s4830051@rangpur.compute.eait.uq.edu.au:~/
+
+# Transfer files FROM Rangpur:
+scp -r s4830051@rangpur.compute.eait.uq.edu.au:~/ImprovedUNet3D_Prostate/outputs_a100 "d:\zxl\Downloads\"
+
+
+## ON RANGPUR (After SSH):
+
+# Navigate to project:
+cd ~/ImprovedUNet3D_Prostate
+
+# Run setup (FIRST TIME ONLY):
+bash setup_rangpur.sh
+
+# Activate environment (every time you login):
+conda activate prostate_seg
+
+# Test your setup:
+sbatch test_job.sh
+
+# Start training:
+sbatch train_job.sh
+
+# Check job status:
+squeue -u s4830051
+
+# Monitor training progress:
+tail -f train_*.out
+
+# Cancel a job:
+scancel JOBID
+
+# After training, generate predictions:
+sbatch predict_job.sh
+
+# List all outputs:
+ls -lh outputs_a100/
+
+# View training results:
+cat outputs_a100/test_results.json
+
+
+===============================================
+FULL WORKFLOW
+===============================================
+
+1. SSH into Rangpur:
+   ssh s4830051@rangpur.compute.eait.uq.edu.au
+
+2. Run setup (first time only):
+   cd ~/ImprovedUNet3D_Prostate
+   bash setup_rangpur.sh
+
+3. Submit training job:
+   conda activate prostate_seg
+   sbatch train_job.sh
+
+4. Monitor training:
+   squeue -u s4830051
+   tail -f train_*.out
+
+5. After training completes, generate predictions:
+   sbatch predict_job.sh
+
+6. Download results (from Windows PowerShell):
+   scp -r s4830051@rangpur.compute.eait.uq.edu.au:~/ImprovedUNet3D_Prostate/outputs_a100 "d:\zxl\Downloads\"
+
+7. View results:
+   Start-Process "d:\zxl\Downloads\outputs_a100\training_history.png"
+
+
+===============================================
+TROUBLESHOOTING
+===============================================
+
+# If conda activate doesn't work:
+source $(conda info --base)/etc/profile.d/conda.sh
+conda activate prostate_seg
+
+# Check GPU availability:
+nvidia-smi
+
+# View error logs:
+cat train_*.err
+
+# Check disk space:
+df -h ~
+
+# List all your jobs:
+sacct -u s4830051
+
+# Check environment is correct:
+which python
+python --version
+
+===============================================
