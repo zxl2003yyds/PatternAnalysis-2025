@@ -1,0 +1,17 @@
+{
+    "per_class_dice": [
+        0.0,
+        0.0,
+        0.0,
+        0.5918896794319153,
+        0.8635432124137878
+    ],
+    "mean_dice": 0.2910865843296051,
+    "class_names": [
+        "Background",
+        "Body",
+        "Bone",
+        "Bladder",
+        "Prostate"
+    ]
+}

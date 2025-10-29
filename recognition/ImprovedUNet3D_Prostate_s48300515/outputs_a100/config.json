@@ -1,0 +1,17 @@
+{
+    "data_root": "/home/groups/comp3710/HipMRI_Study_open",
+    "target_shape": [
+        144,
+        288,
+        288
+    ],
+    "num_classes": 5,
+    "base_channels": 32,
+    "batch_size": 1,
+    "epochs": 100,
+    "learning_rate": 0.001,
+    "num_workers": 4,
+    "output_dir": "./outputs_a100_fullres",
+    "save_freq": 10,
+    "resume": false
+}
